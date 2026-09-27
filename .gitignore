@@ -1,0 +1,13 @@
+# Material de referencia (tarjetas de otros abogados) — no publicar
+referencias/
+
+# Fotos originales sin retocar
+assets/img/originales/
+assets/img/logo-referencia.webp
+
+# Configuración local de Claude / editor
+.claude/
+.vscode/
+.DS_Store
+Thumbs.db
+__pycache__/
