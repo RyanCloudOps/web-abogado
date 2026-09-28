@@ -5,7 +5,7 @@
 window.SITE_CONFIG = {
   // Dirección pública de la web (sin barra final). Actualizar al tener el dominio definitivo.
   // Si cambia, actualizar también robots.txt, sitemap.xml y las etiquetas og/canonical de index.html.
-  siteUrl: "https://ryancloudops.github.io/abogado-amilcar-etzel",
+  siteUrl: "https://ryancloudops.github.io/web-abogado",
 
   // Activar solo al publicar en Vercel con Web Analytics habilitado.
   vercelAnalytics: false,
