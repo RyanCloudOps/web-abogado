@@ -11,3 +11,6 @@ assets/img/logo-referencia.webp
 .DS_Store
 Thumbs.db
 __pycache__/
+
+# Scripts de trabajo (retoque de fotos, generación de iconos) — no forman parte de la web
+tools/

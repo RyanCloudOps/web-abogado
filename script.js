@@ -11,9 +11,48 @@
   document.querySelectorAll("[data-mail-text]").forEach(el => (el.textContent = C.email));
   document.querySelectorAll("[data-address]").forEach(el => (el.textContent = C.address));
   document.querySelectorAll("[data-hours]").forEach(el => (el.textContent = C.hoursText));
-  document.getElementById("mapFrame").src =
-    `https://maps.google.com/maps?q=${encodeURIComponent(C.mapQuery)}&z=15&output=embed`;
-  document.getElementById("year").textContent = new Date().getFullYear();
+  document.querySelectorAll("[data-legal-name]").forEach(el => (el.textContent = C.legalName));
+  document.querySelectorAll("[data-registration]").forEach(el => (el.textContent = C.registration));
+  const mapFrame = document.getElementById("mapFrame");
+  if (mapFrame) mapFrame.src = `https://maps.google.com/maps?q=${encodeURIComponent(C.mapQuery)}&z=15&output=embed`;
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+
+  // ---------- Datos estructurados (Google) ----------
+  if (document.body.dataset.page === "home") {
+    const ld = document.createElement("script");
+    ld.type = "application/ld+json";
+    ld.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      name: "Amilcar Etzel · Abogado",
+      url: `${C.siteUrl}/`,
+      image: `${C.siteUrl}/assets/img/og-image.jpg`,
+      description: "Asesoría y defensa legal en Derecho Constitucional, Penal, Civil, Familiar, Laboral y Administrativo en Chuquisaca, Bolivia.",
+      telephone: C.phone,
+      email: C.email,
+      address: { "@type": "PostalAddress", streetAddress: C.address, addressLocality: "Sucre", addressRegion: "Chuquisaca", addressCountry: "BO" },
+      areaServed: { "@type": "AdministrativeArea", name: "Chuquisaca, Bolivia" },
+      knowsLanguage: "es",
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:30",
+        closes: "18:30"
+      },
+      founder: { "@type": "Person", name: C.legalName, jobTitle: "Abogado" }
+    });
+    document.head.appendChild(ld);
+  }
+
+  // ---------- Analítica (Vercel Web Analytics, sin cookies) ----------
+  if (C.vercelAnalytics) {
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    const va = document.createElement("script");
+    va.defer = true;
+    va.src = "/_vercel/insights/script.js";
+    document.head.appendChild(va);
+  }
 
   // ---------- Header y menú móvil ----------
   const header = document.getElementById("header");
@@ -23,12 +62,12 @@
 
   const toggle = document.getElementById("navToggle");
   const nav = document.getElementById("nav");
-  toggle.addEventListener("click", () => {
+  if (toggle && nav) toggle.addEventListener("click", () => {
     const open = nav.classList.toggle("nav--open");
     toggle.setAttribute("aria-expanded", open);
     document.body.classList.toggle("no-scroll", open);
   });
-  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+  if (nav) nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
     nav.classList.remove("nav--open");
     toggle.setAttribute("aria-expanded", "false");
     document.body.classList.remove("no-scroll");
@@ -42,6 +81,7 @@
 
   // ---------- Reservas ----------
   const form = document.getElementById("bookingForm");
+  if (!form) return;
   const fecha = form.fecha;
   const hora = form.hora;
   const errorEl = document.getElementById("formError");

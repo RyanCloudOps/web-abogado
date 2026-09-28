@@ -24,17 +24,20 @@ El objetivo de la página es presentar sus servicios y facilitar que los cliente
 - **Google Maps** (iframe) para la ubicación.
 - Enlaces `wa.me` (WhatsApp) y plantillas de evento de **Google Calendar** para las reservas.
 - Imágenes en formato **WebP**; diseño responsive (móvil, tablet y escritorio).
-- `tools/retoque_fotos.py` — script en Python + Pillow para el retoque suave de fotos.
 
 ## Estructura
 
 ```
 index.html        Página principal
+aviso-legal.html  Aviso legal
+privacidad.html   Política de privacidad y cookies
+404.html          Página de error personalizada
+robots.txt        Instrucciones para buscadores
+sitemap.xml       Mapa del sitio para Google
 styles.css        Estilos (paleta azul marino y dorado)
 script.js         Menú, animaciones y lógica de reservas
 config.js         Datos de contacto y horarios  ← editar aquí
 assets/img/       Fotos, fondo y favicon
-tools/            Utilidades (retoque de fotos)
 ```
 
 ## Configuración
@@ -54,7 +57,9 @@ Y abrir <http://localhost:5510>.
 
 ## Próximos pasos
 
-- [ ] Completar los datos de contacto reales en `config.js`.
+- [ ] Completar los datos de contacto reales y la matrícula del Registro Público de la Abogacía en `config.js`.
+- [ ] Que el abogado revise el Aviso legal y la Política de privacidad.
+- [ ] Al tener el dominio definitivo, cambiar la URL en `config.js`, `index.html` (canonical/og), las páginas legales, `robots.txt` y `sitemap.xml`.
 - [ ] Desplegar en Vercel y conectar un dominio propio (`.com` o `.bo`).
 - [ ] Automatizar las reservas con el Google Calendar del despacho (Cal.com o Google Apps Script).
 - [ ] Registrar el sitio en Google Search Console y crear el perfil de Google Business.

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ryancloudops.github.io/abogado-amilcar-etzel/sitemap.xml

@@ -3,6 +3,18 @@
    Los valores marcados con "PENDIENTE" son de ejemplo.
    ========================================================= */
 window.SITE_CONFIG = {
+  // Dirección pública de la web (sin barra final). Actualizar al tener el dominio definitivo.
+  // Si cambia, actualizar también robots.txt, sitemap.xml y las etiquetas og/canonical de index.html.
+  siteUrl: "https://ryancloudops.github.io/abogado-amilcar-etzel",
+
+  // Activar solo al publicar en Vercel con Web Analytics habilitado.
+  vercelAnalytics: false,
+
+  // Datos del titular para el Aviso legal. PENDIENTE
+  legalName: "Amilcar Etzel",
+  // Matrícula del Registro Público de la Abogacía (Ministerio de Justicia). PENDIENTE
+  registration: "PENDIENTE",
+
   // Teléfono para llamadas (formato internacional, sin espacios). PENDIENTE
   phone: "+59170000000",
   // Cómo se muestra el teléfono en pantalla. PENDIENTE
